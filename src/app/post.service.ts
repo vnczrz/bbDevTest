@@ -37,8 +37,6 @@ export class PostService {
     
   ]
 
-  
-
   constructor() { }
 
   getPosts(){
@@ -52,7 +50,6 @@ export class PostService {
         return s.uuid === uuid;
       }
     );
-    
     return post;
   }
 
