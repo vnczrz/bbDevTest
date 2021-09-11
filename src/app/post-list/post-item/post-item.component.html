@@ -1,0 +1,12 @@
+<div class="container p-2">
+<div class="card" style="width: 35rem;">
+    <img class="card-img-top" src="{{ post.heroImg }}" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{ post.title }}</h5>
+      <p class="card-text">By: {{ post.author }}</p>
+      <a 
+      [routerLink]= "['/post', post.author, post.uuid]"
+      class="btn btn-primary">Read more...</a>
+    </div>
+  </div>
+</div> 

@@ -1,0 +1,29 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-8 offset-md-2">
+            
+            <div class="row">
+                <h1 class="section-header pt-4 pb-1">{{ post.title }}</h1>
+            </div>
+            
+            <div class="row">
+                
+                <img src="{{ post.heroImg }}" class="img-fluid mt-4 pb-4" alt="...">
+            </div>
+
+            <div class="row">
+                <article class="narrow-river">
+                    <div class="byline">
+                        <p class="author">By <span>{{ post.author }}</span></p>
+                        <p class="pub-date">{{ post.published }}</p>
+                    </div> 
+                    
+                <p class="drop-cap">
+                    {{ post.body }}
+                </p>
+                </article>
+            </div>
+        
+        </div>
+    </div>
+</div>

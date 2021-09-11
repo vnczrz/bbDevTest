@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-md-3">
+            <!-- pass blogpost from parent element using property binding 
+                *ngFor tells Angular for every blog in the blog array create a post-item component
+            -->
+            <app-post-item
+            [post] = "blogPost"
+            *ngFor="let blogPost of blogPosts"
+            ></app-post-item>
+        </div>
+    </div>
+</div>
