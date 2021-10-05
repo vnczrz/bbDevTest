@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common'
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { PostService } from '../post.service';
@@ -20,7 +21,7 @@ export class PostCreateComponent implements OnInit {
     private router: Router,
     private postService: PostService,
     private uuid: UuidService,
-
+    private datePipe: DatePipe
   ) { }
 
   ngOnInit() {
@@ -52,6 +53,7 @@ export class PostCreateComponent implements OnInit {
       body = post.body;
     } else {
       uuid = this.uuid.generate()
+      published = new Date().toLocaleDateString();
     }
 
     this.blogForm = new FormGroup({
@@ -66,9 +68,13 @@ export class PostCreateComponent implements OnInit {
 
   onSubmit() {
     if (this.editMode) {
+      console.log(this.blogForm);
       this.postService.updatePost(this.id, this.blogForm.value);
+      this.onCancel();
     } else {
+      console.log(this.blogForm);
       this.postService.createPost(this.blogForm.value);
+      this.onCancel();
     }
   }
 

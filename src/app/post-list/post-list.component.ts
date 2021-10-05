@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { PostService } from '../post.service';
 import { Post } from '../shared/post.model';
 
@@ -10,14 +11,22 @@ import { Post } from '../shared/post.model';
 })
 export class PostListComponent implements OnInit {
   //utilize the '!' symbol to indicate definite assignment 
-  blogPosts!: Post[];
+  public blogPosts!: Post[];
 
   constructor( private postService: PostService) { }
 
   ngOnInit(){
+    ///subscribe to changes to posts array
+    this.postService.postsChanged
+      .subscribe(
+        (posts: Post[]) => {
+          this.blogPosts= posts;
+        }
+      );
     //on init call service to populate array of posts
     this.blogPosts = this.postService.getPosts();
 
   }
+
 
 }
