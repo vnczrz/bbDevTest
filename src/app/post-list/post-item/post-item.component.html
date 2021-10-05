@@ -5,7 +5,8 @@
       <h5 class="card-title">{{ post.title }}</h5>
       <p class="card-text">By: {{ post.author }}</p>
       <a 
-      [routerLink]= "['/post', post.author, post.uuid]"
+      [routerLink]= "['/post', index, post.uuid]"
+      routerLinkActive="active"
       class="btn btn-primary">Read more...</a>
     </div>
   </div>

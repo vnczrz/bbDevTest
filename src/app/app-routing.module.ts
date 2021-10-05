@@ -6,8 +6,9 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
 
 const routes: Routes = [
   { path: 'home', component: PostListComponent,},
-  { path: 'post/:user/:uuid', component: PostDetailComponent},
+  { path: 'post/:id/:uuid', component: PostDetailComponent},
   { path: 'create', component: PostCreateComponent},
+  { path: 'create/:id', component: PostCreateComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full'},
 ];
 

@@ -1,1 +1,78 @@
-<p>post-create works!</p>
+<div class="row">
+    <div class="col-xs-8">
+        <form [formGroup]="blogForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="form-group">
+                        <label for="Author">Author</label>
+                        <input 
+                        type="text"
+                        id="author"
+                        formControlName="author"
+                        class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input 
+                        type="text"
+                        id="title"
+                        formControlName="title"
+                        class="form-control">
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="heroImg">Image URL</label>
+                        <input 
+                        type="text"
+                        id="heroImg"
+                        formControlName="heroImg"
+                        class="form-control"
+                        #imagePath>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <img [src]="imagePath.value" 
+                    class="img-responsive"
+                     alt=""
+                     >
+                </div>                
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="body">Body</label>
+                        <textarea 
+                        formControlName="body" 
+                        id="body" 
+                        rows="8" 
+                        class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <button
+                    type="submit"
+                    class='btn btn-success'
+                    [disabled]="!blogForm.valid"
+                    >Save</button>
+                    <button
+                    type="button"
+                    class="btn btn-danger"
+                    (click)="onCancel()"
+                    >Cancel</button>
+                </div> 
+            </div>
+        </form>
+    </div>
+</div>

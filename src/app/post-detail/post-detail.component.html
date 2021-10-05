@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-8 offset-md-2">
+        <div class="col-md-8 offset-md-2">
             
             <div class="row">
                 <h1 class="section-header pt-4 pb-1">{{ post.title }}</h1>
@@ -12,17 +12,34 @@
             </div>
 
             <div class="row">
-                <article class="narrow-river">
-                    <div class="byline">
-                        <p class="author">By <span>{{ post.author }}</span></p>
-                        <p class="pub-date">{{ post.published }}</p>
-                    </div> 
+                <div class="col-xs-8">
+                    <article class="narrow-river">
+                        <div class="byline">
+                            <p class="author">By <span>{{ post.author }}</span></p>
+                            <p class="pub-date">{{ post.published }}</p> 
+                        </div> 
+                    </article>
+                </div>
+                <div class="col-xs-3">
+                    <button 
+                    type="button" 
+                    class="btn btn-success"
+                    (click)="onEdit()"
+                    >Edit</button>
                     
+                    <button 
+                    type="button" 
+                    class="btn btn-danger"
+                    (click)="onDelete()"
+                    >Delete</button>
+                </div>
+
+                    
+            </div>
                 <p class="drop-cap">
                     {{ post.body }}
                 </p>
-                </article>
-            </div>
+                
         
         </div>
     </div>

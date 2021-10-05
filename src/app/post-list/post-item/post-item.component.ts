@@ -10,7 +10,7 @@ import { Post } from 'src/app/shared/post.model';
 export class PostItemComponent implements OnInit {
   //post is passed down using @input property binding from parent component postList
   @Input() post!: Post;
-
+  @Input() index!: number;
   constructor( ) { }
 
   ngOnInit(){

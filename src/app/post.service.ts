@@ -1,11 +1,14 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+
 import { Post } from './shared/post.model';
+import { UuidService } from './uuid.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
-  
+  postsChanged = new Subject<Post[]>();
    
 
   //array of posts
@@ -37,20 +40,38 @@ export class PostService {
     
   ]
 
-  constructor() { }
+  constructor(private uuid: UuidService) { }
 
   getPosts(){
     return this.posts.slice();
   }
 
-  getPost(uuid: string): any{
-    
-    const post = this.posts.find(
-      (s) => {
-        return s.uuid === uuid;
-      }
-    );
-    return post;
+  // getPost(uuid: string): any{
+  //   const post = this.posts.find(
+  //     (s) => {
+  //       return s.uuid === uuid;
+  //     }
+  //   );
+  //   return post;
+  // }
+
+  getPost(index: number){
+    return this.posts.slice()[index];
+  }
+
+  createPost(post: Post) {
+    this.posts.push(post);
+    this.postsChanged.next(this.posts.slice());
+  }
+
+  updatePost(index: number, newPost: Post) {
+    this.posts[index] = newPost;
+    this.postsChanged.next(this.posts.slice());
+  }
+
+  deletePost(index: number) {
+    this.posts.splice(index,1);
+    this.postsChanged.next(this.posts.slice());
   }
 
 }
